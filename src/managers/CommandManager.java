@@ -2,7 +2,9 @@ package managers;
 
 import command.Command;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,6 +15,7 @@ public class CommandManager {
      * Словарь для хранения команд и их названий
      */
     private final Map<String, Command> commands = new LinkedHashMap<>();
+    private final List<String> commandHistory = new ArrayList<>();
 
     /**
      * Функция регистрации команды
@@ -29,5 +32,20 @@ public class CommandManager {
      */
     public Map<String, Command> getCommands() {
         return commands;
+    }
+
+    /**
+     * @return историю команд
+     */
+    public List<String> getCommandHistory() {
+        return commandHistory;
+    }
+
+    /**
+     * Добовляет команды в историю
+     * @param command команда
+     */
+    public void addToHistory(String command) {
+        commandHistory.add(command);
     }
 }

@@ -26,7 +26,7 @@ public class Clear extends Command {
     }
 
     /**
-     * Исполение команды
+     * Исполнение команды
      * @param arguments массив с аргументами
      * @return результат выполнения команды
      */

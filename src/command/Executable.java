@@ -8,6 +8,7 @@ import utility.ExecutionResponse;
  */
 public interface Executable {
     /**
+     * Исполнение команды
      * @param arguments массив с аргументами
      * @return возвращает результат о выполнении команды
      */

@@ -30,7 +30,7 @@ public class Add extends Command {
      */
     @Override
     public ExecutionResponse apply(String[] arguments) {
-        if (arguments.length > 1 && !arguments[1].isEmpty()) {
+        if (!arguments[1].isEmpty()) {
             return new ExecutionResponse(false, "Неправильное кол-во аргументов \nИспользование: '" + getName() + "'");
         }
         try {

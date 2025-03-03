@@ -152,10 +152,10 @@ public class CollectionManager {
     }
 
     /**
-     * @return возращает коллекцию, переведённую в строку
+     * @return возвращает коллекцию, переведённую в строку
      */
     @Override
-    public String toString() {
+    public String toString()    {
         if (collection.isEmpty()) {return "Коллекция пуста!";}
 
         StringBuilder sb = new StringBuilder();

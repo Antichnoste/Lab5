@@ -9,8 +9,6 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-// Разобраться с аргументов командной строки/переменным окружением
-
 /**
  * Класс файлового менеджера по сериализации/десереализации из коллекции в CSV
  */

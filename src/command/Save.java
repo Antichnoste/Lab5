@@ -17,6 +17,11 @@ public class Save extends Command {
 
     @Override
     public ExecutionResponse apply(String[] arguments) {
-        return null;
+        if (!arguments[1].isEmpty()) {
+            return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
+        }
+
+        manager.saveCollection();
+        return new ExecutionResponse("");
     }
 }

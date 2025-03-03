@@ -40,7 +40,6 @@ public class Help extends Command {
         for (var command : manager.getCommands().values()) {
             sb.append(String.format(" %-35s%-1s%n", command.getName(), command.getDescription()));
         }
-        return new ExecutionResponse(true, sb.toString());
-        //return new ExecutionResponse(manager.getCommands().values().stream().map(command -> String.format(" %-35s%-1s%n", command.getName(), command.getDescription())).collect(Collectors.joining("\n")));
+        return new ExecutionResponse(sb.toString());
     }
 }

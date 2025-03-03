@@ -7,7 +7,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.NoSuchElementException;
 
-// Реализовать если надо вывод ошибок вяских (типа "Введён не enum", "Введена строка, а не цифра" и т.д.)
+// Реализовать если надо вывод ошибок всяких (типа "Введён не enum", "Введена строка, а не цифра" и т.д.)
 
 /**
  * Класс менеджера по считыванию данных из консоли
@@ -131,7 +131,7 @@ public class Ask {
         try{
             String name;
             while(true){
-                console.print("name: ");
+                console.print("Screenwriter's name: ");
                 name = console.readln().trim();
                 if (name.equals("exit")) {throw new AskBreak();}
                 if (!name.isEmpty()) {break;}
@@ -246,7 +246,7 @@ public class Ask {
         try{
             Color color;
             while (true){
-                console.print("color ("+ Color.names() +"): ");
+                console.print("Eye's color ("+ Color.names() +"): ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) {throw new AskBreak();}
                 if (!line.isEmpty()) {
