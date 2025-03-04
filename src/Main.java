@@ -13,14 +13,15 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) throws Ask.AskBreak, IOException {
         StandartConsole console = new StandartConsole();
-        String fileName = "D:\\All\\Огузки\\ex.csv";
 
-//        var fileName = System.getenv("FILE_NAME");
-//
-//        if (fileName == null) {
-//            System.out.println("Переменное окружение FILE_NAME не установленна");
-//            System.exit(1);
-//        }
+        //String fileName = "D:\\All\\Огузки\\ex.csv";
+
+        var fileName = System.getenv("FILE_NAME");
+
+        if (fileName == null) {
+            System.out.println("Переменное окружение FILE_NAME не установленна");
+            System.exit(1);
+        }
 
         DumpManager dumpManager = new DumpManager(fileName, console);
         CollectionManager collectionManager = new CollectionManager(dumpManager);

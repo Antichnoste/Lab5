@@ -43,7 +43,9 @@ public class Runner {
                 userCommand = (console.readln().trim() + " ").split(" ",2);
                 userCommand[1] = userCommand[1].trim();
 
-                commandManager.addToHistory(userCommand[0]);
+                if (!userCommand[0].isEmpty()){
+                    commandManager.addToHistory(userCommand[0]);
+                }
 
                 commandStatus = launchCommand(userCommand);
 

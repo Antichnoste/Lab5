@@ -124,6 +124,7 @@ public class DumpManager {
 
                 if (!collection.isEmpty()){
                     console.println("Файл успешно считан, коллекция загружена");
+                    console.println("----------------------------------------");
                     return;
                 } else {
                     console.printError("В загрузочном файле не обнаружена необходимая коллекция!");
