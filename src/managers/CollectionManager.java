@@ -99,7 +99,7 @@ public class CollectionManager {
      * Сортировать коллекцию
      */
     public void sort() {
-        Collections.sort(collection);
+        Collections.sort(collection, (m1, m2) -> Integer.compare(m1.getOscarsCount(), m2.getOscarsCount()));
     }
 
     /**

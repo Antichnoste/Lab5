@@ -128,6 +128,10 @@ public class Movie extends Element implements Validatable {
         return list.toArray(new String[0]);
     }
 
+    public boolean compareTo(Movie movie) {
+        return getOscarsCount() > movie.getOscarsCount();
+    }
+
     /**
      * @return возвращает id объекта
      */

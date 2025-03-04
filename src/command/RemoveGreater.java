@@ -14,7 +14,7 @@ public class RemoveGreater extends Command {
     private final CollectionManager manager;
 
     public RemoveGreater(Console console, CollectionManager manager) {
-        super("remove_greater {element}", " удалить из коллекции все элементы, превышающие заданный");
+        super("remove_greater {element}", "удалить из коллекции все элементы, превышающие заданный");
         this.console = console;
         this.manager = manager;
     }
@@ -28,15 +28,8 @@ public class RemoveGreater extends Command {
 
             Movie cur = Ask.askMovie(console, 0);
 
-            for (Movie movie : manager.getCollection()){
-                if (cur.getOscarsCount() < movie.getOscarsCount()) {
-                    manager.remove(movie.getId());
-                    manager.sort();
-                }
-            }
-
             for (var i = 0; i < manager.getCollection().size(); i++){
-                if (cur.getOscarsCount() < manager.getCollection().get(i).getOscarsCount()){
+                if (manager.getCollection().get(i).compareTo(cur)){
                     manager.remove(manager.getCollection().get(i).getId());
                     manager.sort();
                     i--;

@@ -43,7 +43,7 @@ public class Runner {
 
                 commandManager.addToHistory(userCommand[0]);
 
-                console.println(userCommand[0]);
+                //console.println(userCommand[0]);
                 commandStatus = launchCommand(userCommand);
 
                 if (commandStatus.getMessage().equals("exit")){
