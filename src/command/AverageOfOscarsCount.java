@@ -1,6 +1,7 @@
 package command;
 
 import managers.CollectionManager;
+import models.Movie;
 import utility.Console;
 import utility.ExecutionResponse;
 
@@ -44,7 +45,7 @@ public class AverageOfOscarsCount extends Command{
         int CountOfMovie = manager.getCollection().size();
         float SumOfOscars = 0;
 
-        for(var movie : manager.getCollection()){
+        for(Movie movie : manager.getCollection()){
             SumOfOscars += movie.getOscarsCount();
         }
 

@@ -1,6 +1,7 @@
 package command;
 
 import managers.CollectionManager;
+import models.Movie;
 import utility.Console;
 import utility.ExecutionResponse;
 
@@ -33,7 +34,7 @@ public class FilterStartsWithTagline extends Command {
     public ExecutionResponse apply(String[] arguments) {
         StringBuilder correctMovie = new StringBuilder();
 
-        for (var movie : manager.getCollection()){
+        for (Movie movie : manager.getCollection()){
             if (movie.getTagline().startsWith(arguments[1])){
                 correctMovie.append(" " + movie.toString() + "\n");
             }

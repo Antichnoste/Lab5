@@ -1,6 +1,7 @@
 package command;
 
 import managers.CollectionManager;
+import models.Movie;
 import utility.Console;
 import utility.ExecutionResponse;
 
@@ -25,7 +26,7 @@ public class RemoveFirst extends Command {
             return new ExecutionResponse(false, "Неправильное кол-во аргументов \nИспользование: '" + getName() + "'");
         }
 
-        var cur = manager.getCollection().getFirst();
+        Movie cur = manager.getCollection().getFirst();
         manager.remove(cur.getId());
         manager.sort();
 

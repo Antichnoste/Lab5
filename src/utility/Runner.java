@@ -36,6 +36,8 @@ public class Runner {
             ExecutionResponse commandStatus;
             String[] userCommand = {"", ""};
 
+            console.println("Добро пожаловать!\nВведите help для вывода доступных команд");
+
             while(true){
                 console.prompt();
                 userCommand = (console.readln().trim() + " ").split(" ",2);
@@ -43,7 +45,6 @@ public class Runner {
 
                 commandManager.addToHistory(userCommand[0]);
 
-                //console.println(userCommand[0]);
                 commandStatus = launchCommand(userCommand);
 
                 if (commandStatus.getMessage().equals("exit")){
@@ -65,10 +66,10 @@ public class Runner {
      */
     private ExecutionResponse launchCommand(String[] userCommand){
         if(userCommand[0].isEmpty()){
-            return new ExecutionResponse("");
+            return new ExecutionResponse(false, "Команда '" + userCommand[0] + "' не найден. Введите 'help' для справки");
         }
 
-        var command = commandManager.getCommands().get(userCommand[0]);
+        Command command = commandManager.getCommands().get(userCommand[0]);
         if (command == null){
             return new ExecutionResponse(false, "Команда '" + userCommand[0] + "' не найден. Введите 'help' для справки");
         }
@@ -122,7 +123,7 @@ public class Runner {
                 }
 
                 executionOutput.append(console.getPrompt() + String.join(" ", userCommand) + "\n");
-                var needLaunch = true;
+                boolean needLaunch = true;
 
                 if (userCommand[0].equals("execute_script")){
                     needLaunch = checkRecursion(userCommand[1], scriptScanner);
@@ -165,8 +166,8 @@ public class Runner {
      * @return True если скрипт можно запускать
      */
     private boolean checkRecursion(String args, Scanner scriptScanner){
-        var recStart = -1;
-        var i = 0;
+        int recStart = -1;
+        int i = 0;
 
         for (String script : scriptStack){
             i++;

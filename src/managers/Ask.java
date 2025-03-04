@@ -36,7 +36,7 @@ public class Ask {
                 if (!name.isEmpty()) {break;}
             }
 
-            var coordinates = askCoordinate(console);
+            Coordinates coordinates = askCoordinate(console);
 
             ZonedDateTime creationDate = ZonedDateTime.now();
             creationDate = ZonedDateTime.parse(creationDate.format(DateTimeFormatter.ISO_DATE_TIME));
@@ -44,7 +44,7 @@ public class Ask {
             int oscarsCount;
             while (true){
                     console.print("oscarsCount: ");
-                    var line = console.readln().trim();
+                    String line = console.readln().trim();
                     if (line.equals("exit")) {throw new AskBreak();}
                     if (!line.isEmpty()){
                         try{
@@ -90,7 +90,7 @@ public class Ask {
             Double x;
             while (true) {
                 console.print("coordinates x: ");
-                var line = console.readln().trim();
+                String line = console.readln().trim();
                 if (line.equals("exit")) {throw new AskBreak();}
                 if (!line.isEmpty()) {
                     try {
@@ -103,7 +103,7 @@ public class Ask {
             double y;
             while (true) {
                 console.print("coordinates y: ");
-                var line = console.readln().trim();
+                String line = console.readln().trim();
                 if (line.equals("exit")) { throw new AskBreak();}
                 if (!line.isEmpty()) {
                     try {
@@ -135,12 +135,13 @@ public class Ask {
                 name = console.readln().trim();
                 if (name.equals("exit")) {throw new AskBreak();}
                 if (!name.isEmpty()) {break;}
+
             }
 
             Float height;
             while (true){
                 console.print("height: ");
-                var line = console.readln().trim();
+                String line = console.readln().trim();
                 if (line.equals("exit")) {throw new AskBreak();}
                 if (line.isEmpty()){
                     height = null;
@@ -155,7 +156,7 @@ public class Ask {
             Float weight;
             while (true){
                 console.print("weight: ");
-                var line = console.readln().trim();
+                String line = console.readln().trim();
                 if (line.equals("exit")) {throw new AskBreak();}
                 if (!line.isEmpty()){
                     try{
@@ -187,7 +188,7 @@ public class Ask {
             MovieGenre genre;
             while (true){
                 console.print("genre ("+ MovieGenre.names() +"): ");
-                var line = console.readln().trim();
+                String line = console.readln().trim();
                 if (line.equals("exit")) {throw new AskBreak();}
                 if (!line.isEmpty()) {
                     try{
@@ -219,7 +220,7 @@ public class Ask {
             MpaaRating rating;
             while (true){
                 console.print("rating ("+ MpaaRating.names() +"): ");
-                var line = console.readln().trim();
+                String line = console.readln().trim();
                 if (line.equals("exit")) {throw new AskBreak();}
                 if (!line.isEmpty()) {
                     try{
@@ -247,7 +248,7 @@ public class Ask {
             Color color;
             while (true){
                 console.print("Eye's color ("+ Color.names() +"): ");
-                var line = console.readln().trim();
+                String line = console.readln().trim();
                 if (line.equals("exit")) {throw new AskBreak();}
                 if (!line.isEmpty()) {
                     try{

@@ -4,6 +4,7 @@ import java.awt.*;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import utility.*;
@@ -114,7 +115,7 @@ public class Movie extends Element implements Validatable {
      * @return объект класса String[]
      */
     public static String[] toArray(Movie movie) {
-        var list = new ArrayList<String>();
+        List<String> list = new ArrayList<String>();
         list.add(Integer.toString(movie.getId()));
         list.add(movie.getName());
         list.add(movie.getCoordinates().toString());

@@ -12,24 +12,24 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) throws Ask.AskBreak, IOException {
-        var console = new StandartConsole();
-        //var fileName = "D:\\All\\Огузки\\ex.csv";
+        StandartConsole console = new StandartConsole();
+        String fileName = "D:\\All\\Огузки\\ex.csv";
 
-        var fileName = System.getenv("FILE_NAME");
+//        var fileName = System.getenv("FILE_NAME");
+//
+//        if (fileName == null) {
+//            System.out.println("Переменное окружение FILE_NAME не установленна");
+//            System.exit(1);
+//        }
 
-        if (fileName == null) {
-            System.out.println("Переменное окружение FILE_NAME не установленна");
-            System.exit(1);
-        }
-
-        var dumpManager = new DumpManager(fileName, console);
-        var collectionManager = new CollectionManager(dumpManager);
+        DumpManager dumpManager = new DumpManager(fileName, console);
+        CollectionManager collectionManager = new CollectionManager(dumpManager);
 
         if (!collectionManager.loadCollection()){
             System.exit(1);
         }
 
-        var commandManager = new CommandManager() {
+        CommandManager commandManager = new CommandManager() {
             {
             register("add", new Add(console, collectionManager));
             register("help", new Help(console, this));

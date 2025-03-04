@@ -24,6 +24,7 @@ public class Show extends Command {
         if (manager.getCollection().isEmpty()) {
             return new ExecutionResponse("");
         }
-        return new ExecutionResponse(true, manager.toString());
+
+        return new ExecutionResponse(manager.toString());
     }
 }

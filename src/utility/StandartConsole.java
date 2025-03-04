@@ -7,7 +7,7 @@ import java.util.Scanner;
  * Для ввода команд и вывода результата
  */
 public class StandartConsole implements Console {
-    private static final String P = "$ ";
+    private static final String P = "> ";
     private static Scanner fileScanner = null;
     private static Scanner defScanner = new Scanner(System.in);
 

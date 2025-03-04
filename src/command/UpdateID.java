@@ -33,7 +33,7 @@ public class UpdateID extends Command {
                 return new ExecutionResponse(false, "ID не распознан");
             }
 
-            var old = manager.getById(id);
+            Movie old = manager.getById(id);
             if (old == null || !manager.getCollection().contains(old)){
                 return new ExecutionResponse(false, "По такому ID не существует фильма!");
             }

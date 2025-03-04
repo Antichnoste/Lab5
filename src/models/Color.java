@@ -9,7 +9,7 @@ public enum Color {
 
     public static String names(){
         StringBuilder names = new StringBuilder();
-        for (var colorType : values()) {
+        for (Color colorType : values()) {
             names.append(colorType.name()).append(", ");
         }
         return names.substring(0, names.length() - 2);

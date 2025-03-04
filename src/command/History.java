@@ -4,6 +4,8 @@ import managers.CommandManager;
 import utility.Console;
 import utility.ExecutionResponse;
 
+import java.util.List;
+
 public class History extends Command {
     private final Console console;
     private final CommandManager manager;
@@ -29,11 +31,11 @@ public class History extends Command {
         StringBuilder commandsHistory = new StringBuilder();
 
         if (manager.getCommandHistory().size() < 15){
-            for (var command : manager.getCommandHistory()){
+            for (String command : manager.getCommandHistory()){
                 commandsHistory.append(" ").append(command).append("\n");
             }
         } else {
-            for (var i = manager.getCommandHistory().size()-15; i < manager.getCommandHistory().size(); i++) {
+            for (int i = manager.getCommandHistory().size()-15; i < manager.getCommandHistory().size(); i++) {
                 commandsHistory.append(" ").append(manager.getCommandHistory().get(i)).append("\n");
             }
         }

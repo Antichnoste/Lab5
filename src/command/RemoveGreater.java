@@ -28,7 +28,7 @@ public class RemoveGreater extends Command {
 
             Movie cur = Ask.askMovie(console, 0);
 
-            for (var i = 0; i < manager.getCollection().size(); i++){
+            for (int i = 0; i < manager.getCollection().size(); i++){
                 if (manager.getCollection().get(i).compareTo(cur)){
                     manager.remove(manager.getCollection().get(i).getId());
                     manager.sort();

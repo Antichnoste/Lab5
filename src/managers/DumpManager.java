@@ -35,7 +35,7 @@ public class DumpManager {
         try{
             StringWriter sw = new StringWriter();
             CSVWriter writer = new CSVWriter(sw, ';');
-            for (var movie: collection){
+            for (Movie movie: collection){
                 writer.writeNext(Movie.toArray(movie));
             }
             String csv = sw.toString();
@@ -53,7 +53,7 @@ public class DumpManager {
     public void writeCollection(Collection <Movie> collection){
         OutputStreamWriter writer = null;
         try{
-            var csv = collection2CSV(collection);
+            String csv = collection2CSV(collection);
             if (csv == null) return;
             writer = new OutputStreamWriter(new FileOutputStream(fileName));
             try{
@@ -91,7 +91,7 @@ public class DumpManager {
                 if (movie.isValid()){
                     collection.add(movie);
                 } else {
-                    console.printError("Файл содержит не корректные данные");
+                    console.printError("Файл содержит некорректные данные");
                 }
             }
 
@@ -109,8 +109,8 @@ public class DumpManager {
      */
     public void readCollection(Collection <Movie> collection){
         if (fileName != null && !fileName.isEmpty()){
-            try (var fileReader = new Scanner(new File(fileName))) {
-                var s = new StringBuilder();
+            try (Scanner fileReader = new Scanner(new File(fileName))) {
+                StringBuilder s = new StringBuilder();
 
                 while (fileReader.hasNextLine()){
                     s.append(fileReader.nextLine());
@@ -118,7 +118,7 @@ public class DumpManager {
                 }
                 collection.clear();
 
-                for (var e : CSV2collection(s.toString())){
+                for (Movie e : CSV2collection(s.toString())){
                     collection.add(e);
                 }
 

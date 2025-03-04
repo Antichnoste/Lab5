@@ -37,7 +37,7 @@ public class Help extends Command {
         }
 
         StringBuilder sb = new StringBuilder();
-        for (var command : manager.getCommands().values()) {
+        for (Command command : manager.getCommands().values()) {
             sb.append(String.format(" %-35s%-1s%n", command.getName(), command.getDescription()));
         }
         return new ExecutionResponse(sb.toString());

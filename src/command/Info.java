@@ -40,7 +40,7 @@ public class Info  extends Command {
         String lastSaveTimeString = (lastSaveTime == null) ? "в данной сессии сохранения еще не происходило" :
                 lastSaveTime.toLocalDate().toString() + " " + lastSaveTime.toLocalTime().toString();
 
-        var s="Сведения о коллекции:\n";
+        String s="Сведения о коллекции:\n";
         s+=" Тип: " + manager.getCollection().getClass().toString()+"\n";
         s+=" Количество элементов: " + manager.getCollection().size()+"\n";
         s+=" Дата последнего сохранения: " + lastSaveTimeString+"\n";

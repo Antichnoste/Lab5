@@ -7,7 +7,7 @@ public enum MpaaRating {
 
     public static String names(){
         StringBuilder names = new StringBuilder();
-        for (var colorType : values()) {
+        for (MpaaRating colorType : values()) {
             names.append(colorType.name()).append(", ");
         }
         return names.substring(0, names.length() - 2);

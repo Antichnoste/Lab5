@@ -1,6 +1,7 @@
 package command;
 
 import managers.CollectionManager;
+import models.Movie;
 import utility.Console;
 import utility.ExecutionResponse;
 
@@ -28,7 +29,7 @@ public class FilterContainsName extends Command {
     public ExecutionResponse apply(String[] arguments) {
         StringBuilder elements = new StringBuilder();
 
-        for (var movie : manager.getCollection()){
+        for (Movie movie : manager.getCollection()){
             if (movie.getName().contains(arguments[1])){
                 elements.append(" " + movie.toString() + "\n");
             }
