@@ -189,10 +189,14 @@ public class CollectionManager {
                     String.format("|%2s%s%2s", "", movie.getCreationDate().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")), "") + // 14
                     String.format("|%"+ ((13 - Integer.valueOf(movie.getOscarsCount()).toString().length() + 1) / 2) +"s%s%"+ ((13 - Integer.valueOf(movie.getOscarsCount()).toString().length()) / 2) +"s", "", movie.getOscarsCount(), "") + //13
                     String.format("|%"+ ((23 - movie.getTagline().length() + 1) / 2) +"s%s%" + ((23 - movie.getTagline().length()) / 2) +"s", "", movie.getTagline(), "") + //23
-                    String.format("|%"+ ((9 - movie.getGenre().toString().length() + 1) / 2) +"s%s%"+ ((9 - movie.getGenre().toString().length()) / 2) +"s", "", movie.getGenre(), "") + // 9
+
+                    String.format("|%"+ ((9 - (movie.getGenre() == null ? "null" : movie.getGenre().toString()).length() + 1) / 2) +"s%s%"+ ((9 - (movie.getGenre() == null ? "null" : movie.getGenre().toString()).length()) / 2) +"s", "", (movie.getGenre() == null ? "null" : movie.getGenre()), "") + // 9
+
                     String.format("|%"+ ((12 - movie.getMpaaRating().toString().length() + 1) / 2) +"s%s%"+ ((12 - movie.getMpaaRating().toString().length()) / 2) +"s", "", movie.getMpaaRating(), "") + // 12
                     String.format("|%"+ ((21 - movie.getScreenwriter().getName().length() + 1) / 2) +"s%s%"+ ((21 - movie.getScreenwriter().getName().length()) / 2) +"s", "", movie.getScreenwriter().getName(), "") + // 21
-                    String.format("|%"+ ((23 - movie.getScreenwriter().getHeight().toString().length()+1) / 2) +"s%s%"+ ((23 - movie.getScreenwriter().getHeight().toString().length()) / 2) +"s","", movie.getScreenwriter().getHeight(),"") + // 23
+
+                    String.format("|%"+ ((23 - (movie.getScreenwriter().getHeight() == null ? "null" : movie.getScreenwriter().getHeight().toString()).length() + 1) / 2) +"s%s%"+ ((23 - (movie.getScreenwriter().getHeight() == null ? "null" : movie.getScreenwriter().getHeight().toString()).length()) / 2) +"s","", movie.getScreenwriter().getHeight() == null ? "null" : movie.getScreenwriter().getHeight(),"") + // 23
+
                     String.format("|%"+ ((23 - movie.getScreenwriter().getWeight().toString().length()+1) / 2) +"s%s%"+ ((23 - movie.getScreenwriter().getWeight().toString().length()) / 2) +"s","", movie.getScreenwriter().getWeight(),"") + // 23
                     String.format("|%"+ ((24 - movie.getScreenwriter().getEyeColor().toString().length()+1) / 2) +"s%s%"+ ((24 - movie.getScreenwriter().getEyeColor().toString().length()) / 2) +"s|%n","", movie.getScreenwriter().getEyeColor(),"")); // 24
         }

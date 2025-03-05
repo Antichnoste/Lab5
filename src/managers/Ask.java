@@ -7,8 +7,6 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.NoSuchElementException;
 
-// Реализовать если надо вывод ошибок всяких (типа "Введён не enum", "Введена строка, а не цифра" и т.д.)
-
 /**
  * Класс менеджера по считыванию данных из консоли
  */
@@ -33,7 +31,13 @@ public class Ask {
                 console.print("Movie's name: ");
                 name = console.readln().trim();
                 if (name.equals("exit")) {throw new AskBreak();}
-                if (!name.isEmpty()) {break;}
+
+                if (!name.isEmpty()) {
+                    break;
+                } else{
+                    console.println("Название фильма не может быть пустым!");
+                }
+
             }
 
             Coordinates coordinates = askCoordinate(console);
@@ -43,24 +47,34 @@ public class Ask {
 
             int oscarsCount;
             while (true){
-                    console.print("oscarsCount: ");
+                    console.print("OscarsCount: ");
                     String line = console.readln().trim();
                     if (line.equals("exit")) {throw new AskBreak();}
                     if (!line.isEmpty()){
                         try{
                             oscarsCount = Integer.parseInt(line);
-                            if (oscarsCount > 0) break;
-                        } catch (NumberFormatException e) {}
+                            if (oscarsCount > 0) {
+                                break;
+                            } else {
+                                console.println("Значение этого поля должно быть положительным!");
+                            }
+                        } catch (NumberFormatException e) {
+                            console.println("Введенное нецелое число");
+                        }
+                    } else{
+                        console.println("Количество оскаров не должно быть пустым!");
                     }
             }
 
             String tagline;
             while (true){
-                console.print("tagline: ");
+                console.print("Tagline: ");
                 tagline = console.readln().trim();
                 if (tagline.equals("exit")) {throw new AskBreak();}
                 if (!tagline.isEmpty()){
                     break;
+                } else{
+                    console.println("Слоган фильма не может быть пустым!");
                 }
             }
 
@@ -89,27 +103,41 @@ public class Ask {
         try {
             Double x;
             while (true) {
-                console.print("coordinates x: ");
+                console.print("Coordinates x: ");
                 String line = console.readln().trim();
                 if (line.equals("exit")) {throw new AskBreak();}
                 if (!line.isEmpty()) {
                     try {
                         x = Double.parseDouble(line);
                         break;
-                    } catch (NumberFormatException e) {}
+                    } catch (NumberFormatException e) {
+                        console.println("Не введен ни один номер");
+                        if (line.contains(",")) console.println("Используйте '.' вместо ',' для ввода номера");
+                    }
+                } else{
+                    console.println("Координаты не могут быть пустыми!");
                 }
             }
 
             double y;
             while (true) {
-                console.print("coordinates y: ");
+                console.print("Coordinates y: ");
                 String line = console.readln().trim();
                 if (line.equals("exit")) { throw new AskBreak();}
                 if (!line.isEmpty()) {
                     try {
                         y = Double.parseDouble(line);
-                        if (y > -708) break;
-                    } catch (NumberFormatException e) {}
+                        if (y > -708) {
+                            break;
+                        } else{
+                           console.println("Значение этого поля должно быть больше -708");
+                        }
+                    } catch (NumberFormatException e) {
+                        console.println("Не введен ни один номер");
+                        if (line.contains(",")) console.println("Используйте '.' вместо ',' для ввода номера");
+                    }
+                } else{
+                    console.println("Координаты не могут быть пустыми!");
                 }
             }
             return new Coordinates(x, y);
@@ -130,39 +158,63 @@ public class Ask {
     public static Person askPerson (Console console) throws AskBreak {
         try{
             String name;
+
             while(true){
                 console.print("Screenwriter's name: ");
                 name = console.readln().trim();
                 if (name.equals("exit")) {throw new AskBreak();}
-                if (!name.isEmpty()) {break;}
-
+                if (!name.isEmpty()){
+                    break;
+                } else{
+                    console.println("Имя сценариста не может быть пустым!");
+                }
             }
 
             Float height;
-            while (true){
-                console.print("height: ");
+            while (true) {
+                console.print("Screenwriter's Height: ");
                 String line = console.readln().trim();
-                if (line.equals("exit")) {throw new AskBreak();}
-                if (line.isEmpty()){
+                if (line.equals("exit")) {
+                    throw new AskBreak();
+                }
+
+                if (!line.isEmpty()) {
+                    try {
+                        height = Float.parseFloat(line);
+                        if (height > 0) {
+                            break;
+                        } else {
+                            console.println("Значение этого поля должно быть положительным");
+                        }
+                    } catch (NumberFormatException e) {
+                        console.println("Не введен ни один номер");
+                        if (line.contains(",")) console.println("Используйте '.' вместо ',' для ввода номера");
+                    }
+                } else{
                     height = null;
                     break;
                 }
-                try{
-                    height = Float.parseFloat(line);
-                    if (height > 0) break;
-                } catch (NumberFormatException e) {}
             }
 
             Float weight;
             while (true){
-                console.print("weight: ");
+                console.print("Screenwriter's Weight: ");
                 String line = console.readln().trim();
                 if (line.equals("exit")) {throw new AskBreak();}
                 if (!line.isEmpty()){
                     try{
                         weight = Float.parseFloat(line);
-                        if (weight > 0) break;
-                    } catch (NumberFormatException e) {}
+                        if (weight > 0){
+                            break;
+                        } else {
+                            console.println("Значение этого поля должно быть положительным");
+                        }
+                    } catch (NumberFormatException e) {
+                        console.println("Not a number entered");
+                        if (line.contains(",")) console.println("Используйте '.' вместо ',' для ввода номера");
+                    }
+                } else{
+                    console.println("Вес сценариста не может быть пустым!");
                 }
             }
 
@@ -187,16 +239,19 @@ public class Ask {
         try{
             MovieGenre genre;
             while (true){
-                console.print("genre ("+ MovieGenre.names() +"): ");
+                console.print("Genre ("+ MovieGenre.names() +"): ");
                 String line = console.readln().trim();
                 if (line.equals("exit")) {throw new AskBreak();}
                 if (!line.isEmpty()) {
                     try{
                         genre = MovieGenre.valueOf(line);
                         break;
-                    } catch (NullPointerException | IllegalArgumentException  e) {}
+                    } catch (NullPointerException | IllegalArgumentException  e) {
+                        console.println("Недопустимый жанр");
+                    }
                 } else {
                     genre = null;
+                    break;
                 }
             }
             return genre;
@@ -219,14 +274,18 @@ public class Ask {
         try{
             MpaaRating rating;
             while (true){
-                console.print("rating ("+ MpaaRating.names() +"): ");
+                console.print("Rating ("+ MpaaRating.names() +"): ");
                 String line = console.readln().trim();
                 if (line.equals("exit")) {throw new AskBreak();}
                 if (!line.isEmpty()) {
                     try{
                         rating = MpaaRating.valueOf(line);
                         break;
-                    } catch (NullPointerException | IllegalArgumentException  e) {}
+                    } catch (NullPointerException | IllegalArgumentException  e) {
+                        console.println("Недопустимый формат рейтинга");
+                    }
+                } else{
+                    console.println("Рейтинг не может быть пустым!");
                 }
             }
             return rating;
@@ -247,14 +306,16 @@ public class Ask {
         try{
             Color color;
             while (true){
-                console.print("Eye's color ("+ Color.names() +"): ");
+                console.print("Screenwriter Eye Color ("+ Color.names() +"): ");
                 String line = console.readln().trim();
                 if (line.equals("exit")) {throw new AskBreak();}
                 if (!line.isEmpty()) {
                     try{
                         color = Color.valueOf(line);
                         break;
-                    } catch (NullPointerException | IllegalArgumentException  e) {}
+                    } catch (NullPointerException | IllegalArgumentException  e) {
+                        console.println("Недопустимый цветовой формат");
+                    }
                 } else {
                     color = null;
                 }

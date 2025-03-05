@@ -19,7 +19,7 @@ public class Main {
         var fileName = System.getenv("FILE_NAME");
 
         if (fileName == null) {
-            System.out.println("Переменное окружение FILE_NAME не установленна");
+            System.out.println("Переменная окружения FILE_NAME не задана");
             System.exit(1);
         }
 

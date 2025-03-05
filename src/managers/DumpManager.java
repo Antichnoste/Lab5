@@ -123,20 +123,29 @@ public class DumpManager {
                 }
 
                 if (!collection.isEmpty()){
+                    console.println("----------------------------------------");
                     console.println("Файл успешно считан, коллекция загружена");
                     console.println("----------------------------------------");
                     return;
                 } else {
+                    console.printError("--------------------------------------------------------");
                     console.printError("В загрузочном файле не обнаружена необходимая коллекция!");
+                    console.printError("--------------------------------------------------------");
                 }
             } catch (FileNotFoundException e) {
+                console.printError("-----------------------");
                 console.printError("Ошибка нахождения файла");
+                console.printError("-----------------------");
             } catch (IllegalStateException e){
+                console.printError("--------------------------");
                 console.printError("Неправильный формат данных");
+                console.printError("--------------------------");
                 System.exit(0);
             }
         } else {
+            console.printError("-----------------------------------------------------");
             console.printError("Переменная окружения с загрузочным файлом не найдена!");
+            console.printError("-----------------------------------------------------");
         }
         collection = new LinkedList<Movie>();
     }

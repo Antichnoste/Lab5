@@ -21,10 +21,6 @@ public class Show extends Command {
             return new ExecutionResponse(false, "Неправильное кол-во аргументов \nИспользование: '" + getName() + "'");
         }
 
-        if (manager.getCollection().isEmpty()) {
-            return new ExecutionResponse("");
-        }
-
         return new ExecutionResponse(manager.toString());
     }
 }
