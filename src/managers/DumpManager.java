@@ -64,7 +64,8 @@ public class DumpManager {
                 console.printError("Ошибка сохранения");
             }
         } catch (FileNotFoundException e) {
-            console.printError("Файл не найден");
+            console.printError("Файл не найден\nУкажите корректный путь в FILE_NAME"); // Сделать так чтобы прога не вылетал при ошибке нахождения файла. Но тогда в чём прикол того что мы вводим файл чрез переменное окружение
+            System.exit(1);
         } finally {
             try {
                 writer.close();

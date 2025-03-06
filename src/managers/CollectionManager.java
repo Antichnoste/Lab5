@@ -76,7 +76,9 @@ public class CollectionManager {
      * @return свободный ID коллекции
      */
     public int getFreeId(){
-        while (getById(++currentId) != null);
+        while (getById(currentId) != null){
+            currentId++;
+        }
         return currentId;
     }
 
@@ -100,7 +102,17 @@ public class CollectionManager {
      * Сортировать коллекцию
      */
     public void sort() {
-        Collections.sort(collection, (m1, m2) -> Integer.compare(m1.getOscarsCount(), m2.getOscarsCount()));
+
+        Comparator<Movie> nameComparator = new Comparator<Movie>() {
+            @Override
+            public int compare(Movie o1, Movie o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        };
+
+        Collections.sort(collection, nameComparator);
+
+        //Collections.sort(collection, (m1, m2) -> Integer.compare(m1.getOscarsCount(), m2.getOscarsCount()));
     }
 
     /**

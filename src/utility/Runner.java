@@ -3,8 +3,7 @@ package utility;
 import command.Command;
 import managers.CommandManager;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -108,7 +107,10 @@ public class Runner {
         }
 
         scriptStack.add(args);
-        try (Scanner scriptScanner = new Scanner( new File(args))){ // ТУТ НАДО ЗАМЕНИТЬ FILE НА InputStreamReader
+        try (FileInputStream fileInputStream = new FileInputStream(args);
+             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+             Scanner scriptScanner = new Scanner(inputStreamReader)){
+
             ExecutionResponse commandStatus;
 
             if (!scriptScanner.hasNext()){
@@ -150,7 +152,7 @@ public class Runner {
             return new ExecutionResponse(false, "Файл со скриптом не найден!");
         } catch (NoSuchElementException e){
             return new ExecutionResponse(false, "Файл со скриптом пуст!");
-        } catch (IllegalStateException e){
+        } catch (IllegalStateException | IOException e){
             console.printError("Непредвиденная ошибка!");
             System.exit(0);
         } finally {

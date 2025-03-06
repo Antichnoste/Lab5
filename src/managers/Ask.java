@@ -111,7 +111,7 @@ public class Ask {
                         x = Double.parseDouble(line);
                         break;
                     } catch (NumberFormatException e) {
-                        console.println("Не введен ни один номер");
+                        console.println("Введите число");
                         if (line.contains(",")) console.println("Используйте '.' вместо ',' для ввода номера");
                     }
                 } else{
@@ -133,7 +133,7 @@ public class Ask {
                            console.println("Значение этого поля должно быть больше -708");
                         }
                     } catch (NumberFormatException e) {
-                        console.println("Не введен ни один номер");
+                        console.println("Введите число");
                         if (line.contains(",")) console.println("Используйте '.' вместо ',' для ввода номера");
                     }
                 } else{
@@ -187,7 +187,7 @@ public class Ask {
                             console.println("Значение этого поля должно быть положительным");
                         }
                     } catch (NumberFormatException e) {
-                        console.println("Не введен ни один номер");
+                        console.println("Введите число");
                         if (line.contains(",")) console.println("Используйте '.' вместо ',' для ввода номера");
                     }
                 } else{
@@ -210,7 +210,7 @@ public class Ask {
                             console.println("Значение этого поля должно быть положительным");
                         }
                     } catch (NumberFormatException e) {
-                        console.println("Not a number entered");
+                        console.println("Введите число");
                         if (line.contains(",")) console.println("Используйте '.' вместо ',' для ввода номера");
                     }
                 } else{
