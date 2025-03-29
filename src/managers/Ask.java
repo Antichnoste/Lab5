@@ -30,7 +30,9 @@ public class Ask {
             while(true){
                 console.print("Movie's name: ");
                 name = console.readln().trim();
-                if (name.equals("exit")) {throw new AskBreak();}
+                if (name.equals("exit")) {
+                    throw new AskBreak();
+                }
 
                 if (!name.isEmpty()) {
                     break;

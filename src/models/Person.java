@@ -10,6 +10,9 @@ public class Person implements Validatable {
     private Float weight; //Поле не может быть null, Значение поля должно быть больше 0
     private Color eyeColor; //Поле может быть null
 
+    private final float MIN_VALUE_HEIGHT = 0; // Значение должно быть строго больше MIN_VALUE_HEIGHT
+    private final float MIN_VALUE_WEIGHT = 0; // Значение должно быть строго больше MIN_VALUE_WEIGHT
+
     /**
      * Конструктор класс Person
      * @param name имя
@@ -55,8 +58,8 @@ public class Person implements Validatable {
     @Override
     public boolean isValid() {
         if (name == null || name.isEmpty()) return false;
-        if (height == null || height <= 0) return false;
-        if (weight == null || weight <= 0) return false;
+        if (height == null || height <= MIN_VALUE_HEIGHT) return false;
+        if (weight == null || weight <= MIN_VALUE_WEIGHT) return false;
         return eyeColor != null;
     }
 

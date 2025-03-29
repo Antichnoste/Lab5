@@ -13,7 +13,7 @@ import utility.*;
  *  Класс "фильм"
  */
 
-public class Movie extends Element implements Validatable {
+public class Movie extends Element implements Validatable{
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
@@ -23,6 +23,9 @@ public class Movie extends Element implements Validatable {
     private MovieGenre genre; //Поле может быть null
     private MpaaRating mpaaRating; //Поле не может быть null
     private Person screenwriter;
+
+    private int MIN_VALUE_ID = 1; // Значение поля не меньше этого значения
+    private int MAX_VALUE_OSCARS_COUNT = 1; // Значение поля не меньше этого значения
 
     /**
      * Основной конструктор
@@ -129,10 +132,6 @@ public class Movie extends Element implements Validatable {
         return list.toArray(new String[0]);
     }
 
-    public boolean compareTo(Movie movie) {
-        return getOscarsCount() > movie.getOscarsCount();
-    }
-
     /**
      * @return возвращает id объекта
      */
@@ -204,11 +203,11 @@ public class Movie extends Element implements Validatable {
      */
     @Override
     public boolean isValid() {
-        if (id == null || id <= 0) return false;
+        if (id == null || id < MIN_VALUE_ID) return false;
         if (name == null ||  name.isEmpty()) return false;
         if (coordinates == null) return false;
         if (creationDate == null) return false;
-        if (oscarsCount <= 0) return false;
+        if (oscarsCount < MAX_VALUE_OSCARS_COUNT) return false;
         if (mpaaRating == null) return false;
         return true;
     }

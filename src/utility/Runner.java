@@ -17,6 +17,10 @@ public class Runner {
     private final List<String> scriptStack = new ArrayList<>();
     private int lengthRecursion = -1;
 
+    private final int MAX_RECURSION_DEEP = 500;
+    private final int MIN_RECURSION_DEEP = 0;
+
+
     /**
      * Конструктор
      * @param console консоль
@@ -179,14 +183,14 @@ public class Runner {
                 if (recStart < 0){
                     recStart = i;
                 }
-                if (lengthRecursion < 0){
+                if (lengthRecursion < MIN_RECURSION_DEEP){
                     console.selectConsoleScanner();
                     console.println("Была замечена рекурсия! Введите максимальную глубину рекурсии(0...500)");
                     while(lengthRecursion < 0 || lengthRecursion > 500){
                         try{
                             console.print("> ");
                             lengthRecursion = Integer.parseInt(console.readln().trim());
-                            if (lengthRecursion < 0 || lengthRecursion > 500) {
+                            if (lengthRecursion < MIN_RECURSION_DEEP || lengthRecursion > MAX_RECURSION_DEEP) {
                                 console.println("длина не распознана");
                             }
                         } catch (NumberFormatException e){
@@ -195,7 +199,7 @@ public class Runner {
                     }
                     console.selectConsoleScanner();
                 }
-                if (i > recStart + lengthRecursion || i > 500) {
+                if (i > recStart + lengthRecursion || i > MAX_RECURSION_DEEP) {
                     return false;
                 }
             }

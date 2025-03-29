@@ -7,7 +7,8 @@ import utility.Console;
 import utility.ExecutionResponse;
 
 /**
- * Команда, которая удаляет самый "большой"? элемент
+ * Команда, которая удаляет самый все элементы больше введённого
+ * compareTo написано по полю oscarsCount
  */
 public class RemoveGreater extends Command {
     private final Console console;
@@ -29,7 +30,7 @@ public class RemoveGreater extends Command {
             Movie cur = Ask.askMovie(console, 0);
 
             for (int i = 0; i < manager.getCollection().size(); i++){
-                if (manager.getCollection().get(i).compareTo(cur)){
+                if (manager.getCollection().get(i).compareTo(cur) > 0) {
                     manager.remove(manager.getCollection().get(i).getId());
                     manager.sort();
                     i--;

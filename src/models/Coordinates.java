@@ -12,6 +12,8 @@ public class Coordinates implements Validatable {
     private Double x; //Поле не может быть null
     private double y; //Значение поля должно быть больше -708
 
+    private final Double MIN_VALUE_Y = -708.0; // Не включительно
+
     /** Конструктор
      *
      * @param x координата x
@@ -57,7 +59,7 @@ public class Coordinates implements Validatable {
 
     @Override
     public boolean isValid() {
-        if ((x == null) || (y <= -708)) return false;
+        if ((x == null) || (y <= MIN_VALUE_Y)) return false;
         return true;
     }
 
