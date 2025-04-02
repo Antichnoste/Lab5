@@ -169,7 +169,7 @@ public class CollectionManager {
      */
     @Override
     public String toString()    {
-        if (collection.isEmpty()) {return "Коллекция пуста!";}
+        //if (collection.isEmpty()) {return "Коллекция пуста!";}
 
         StringBuilder sb = new StringBuilder();
 

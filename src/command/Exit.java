@@ -8,6 +8,27 @@ import utility.ExecutionResponse;
  */
 public class Exit extends Command {
     private Console console;
+    public static StringBuilder Key4exit = new StringBuilder();
+
+    static {
+        Key4exit.append("""
+                  ╱|、 \s
+                 (˚ˎ 。7   "Прощай, жестокий мир!" \s
+                 |、˜〵    \s
+                 じしˍ,)ノ \s
+                """);
+    }
+//          sb.append("""
+//                      ✧   /\\_/\\   ✧ \s
+//                     ✦  ( ≖‿≖ )  ✦ \s
+//                    ✧~~/ ︶︶  \\~~✧ \s
+//                      /   ︶   \\ \s
+//                     / ︶    ︶  \\ \s
+//                    ✧¯¯¯¯¯¯¯¯¯¯✧ \s
+//                  "Спокойной ночи, кодёр!"
+//
+//                """);
+
 
     /**
      * Конструктор
@@ -28,6 +49,8 @@ public class Exit extends Command {
         if (!arguments[1].isEmpty()) {
             return new ExecutionResponse(false, "Неправильное кол-во аргументов \nИспользование: '" + getName() + "'");
         }
-        return new ExecutionResponse("exit");
+
+
+        return new ExecutionResponse(Key4exit.toString());
     }
 }

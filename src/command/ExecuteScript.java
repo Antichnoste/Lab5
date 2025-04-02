@@ -26,6 +26,7 @@ public class ExecuteScript extends Command {
             return new ExecutionResponse(false, "Неправильное кол-во аргументов \nИспользование: '" + getName() + "'");
         }
 
+
         return new ExecutionResponse("Выполнение скрипта '" + arguments[1] + "'...");
     }
 }

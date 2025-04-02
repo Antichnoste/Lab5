@@ -37,7 +37,6 @@ public class StandartConsole implements Console {
 
     /**
      * Чтение из файла
-     *
      * @return возвращает следующую строку
      */
     public String readln(){
